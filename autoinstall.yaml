@@ -4,10 +4,10 @@ autoinstall:
     interactive-sections: # Lista de etapas a serem exibidas durante a instalação
         - network # Exibe a tela de conexão com a rede
     identity: # Configura o usuário inicial para o sistema
-        realname: "Igor"
+        realname: 'Igor'
         username: irs
         # ATENÇÃO: Gere um hash para a senha com o comando "mkpasswd usando o pacote whois"
-        password: "$y$j9T$uhkxlm8nUQaNu.6rl4k2d.$DIldpYy96OHg8lFjfXfc671BZcGWkPOmaDONGAhGSg3"
+        password: '$y$j9T$uhkxlm8nUQaNu.6rl4k2d.$DIldpYy96OHg8lFjfXfc671BZcGWkPOmaDONGAhGSg3'
         hostname: irs-ubuntu
 # Optional configuration
     storage: # Especifica o layout de partição a ser usado
@@ -15,11 +15,8 @@ autoinstall:
         layout:
             name: hybrid # Usa TPM
             encrypted: yes
-            match: # Especifica qual disco usar
-                size: largest # Usa o maior disco do sistema
-    keyboard: # Define o layout do teclado
-        layout: "br"
-    locale: "pt_BR.utf8" # Define o local para Português do Brasil com UTF-8
+    keyboard:
+        layout: br
     timezone: "America/Sao_Paulo" # Define o fuso horário para Brasília
     source: # Especifica a variante do Ubuntu a ser instalada
         id: ubuntu-desktop # Instalação padrão do Ubuntu Desktop
