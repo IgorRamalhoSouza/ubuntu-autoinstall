@@ -10,7 +10,7 @@ autoinstall:
         layout: br
     timezone: "America/Sao_Paulo"   
     packages:
-        - tpm2-tools
+        - ipython3
     snaps:
         - name: slack
           channel: stable
