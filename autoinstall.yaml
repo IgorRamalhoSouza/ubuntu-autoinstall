@@ -1,39 +1,33 @@
-# Required configuration
 autoinstall:
-    version: 1 # Define a versão da configuração do autoinstall. Atualmente, deve ser "1".
-    interactive-sections: # Lista de etapas a serem exibidas durante a instalação
-        - network # Exibe a tela de conexão com a rede
-    identity: # Configura o usuário inicial para o sistema
-        realname: 'Igor'
-        username: irs
-        # ATENÇÃO: Gere um hash para a senha com o comando "mkpasswd usando o pacote whois"
+    version: 1
+    interactive-sections:
+    - network
+    identity:
+        realname: 'Corabank'
+        hostname: ubuntu-cora
+        username: cora
         password: '$y$j9T$uhkxlm8nUQaNu.6rl4k2d.$DIldpYy96OHg8lFjfXfc671BZcGWkPOmaDONGAhGSg3'
-        hostname: irs-ubuntu
-# Optional configuration
-    storage: # Especifica o layout de partição a ser usado
-    # AVISO: ISTO APAGA O DISCO INTEIRO!
-        layout:
-            name: hybrid # Usa TPM
-            encrypted: yes
+    locale: pt_BR.utf8
     keyboard:
         layout: br
-    timezone: "America/Sao_Paulo" # Define o fuso horário para Brasília
-    source: # Especifica a variante do Ubuntu a ser instalada
-        id: ubuntu-desktop # Instalação padrão do Ubuntu Desktop
-    codecs: # Instala codecs restritos
-        install: true # Instala (ubuntu-restricted-addons)
-    drivers: # Instala drivers de terceiros
-        install: true # Instala drivers adicionais (como os da Nvidia)
-    packages: # Lista de pacotes .deb a serem instalados, adicione outros pacotes .deb aqui se necessário
+    timezone: "America/Sao_Paulo"   
+    source:
+        id: ubuntu-desktop
+    packages:
+        - ipython3
+        - git
         - wget
-    snaps: # Lista de snaps a serem instalados
+    snaps:
         - name: slack
           channel: stable
-          classic: true # Slack geralmente requer modo clássico
-    updates: all # Instala todas as atualizações após a instalação
-    shutdown: reboot # Reinicia após a instalação
-    error-commands: # Comandos em caso de falha
-        - tar -czf /installer-logs.tar.gz /var/log/installer
-        - journalctl -b > /installer-journal.log
-    kernel-crash-dumps:
-        enabled: false
+          classic: true
+    codecs:
+        install: true
+    drivers:
+        install: true
+    storage:
+        layout:
+            name: hybrid
+            encrypted: yes
+    updates: all
+    shutdown: reboot
