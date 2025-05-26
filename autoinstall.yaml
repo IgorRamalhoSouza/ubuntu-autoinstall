@@ -4,7 +4,7 @@ autoinstall:
         realname: 'Corabank'
         hostname: cora-ubuntu
         username: cora
-        password: '$y$j9T$rsyMbWUWjMRTb4s4SKZqJ.$xTsaBvJ8AHMj3ccDiSpR6bD3Zg4E.vSKD3KdI5bfdv0'
+        password: '$y$j9T$0xLQBDtbq7L9BPEkhoaJj.$BEhAl3n7dv9Zct79k6HBiYB9cODGF9g8QiQjyvzZZL3'
     locale: pt_BR.utf8
     keyboard:
         layout: br
