@@ -1,5 +1,7 @@
 autoinstall:
     version: 1
+    interactive-sections:
+        - network
     identity:
         realname: 'Corabank'
         hostname: cora-ubuntu
