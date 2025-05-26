@@ -16,9 +16,9 @@ autoinstall:
           channel: stable
           classic: true
     storage:
-        layout:
-          name: lvm
-          password: c0r4dsk24
+            layout:
+              name: lvm
+              password: c0r4dsk24
     codecs:
         install: true
     drivers:
