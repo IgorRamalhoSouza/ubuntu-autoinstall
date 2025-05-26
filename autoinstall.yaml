@@ -8,13 +8,9 @@ autoinstall:
     locale: pt_BR.utf8
     keyboard:
         layout: br
-    timezone: "America/Sao_Paulo"   
-    packages:
-        - ipython3
-    snaps:
-        - name: slack
-          channel: stable
-          classic: true
+    timezone: "America/Sao_Paulo" 
+    source:
+        id: ubuntu-desktop
     storage:
             layout:
               name: lvm
