@@ -25,9 +25,5 @@ autoinstall:
         install: true
     drivers:
         install: true
-    storage:
-        layout:
-            name: hybrid
-            encrypted: yes
     updates: all
     shutdown: reboot
