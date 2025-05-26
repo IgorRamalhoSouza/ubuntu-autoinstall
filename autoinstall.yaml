@@ -25,8 +25,3 @@ autoinstall:
         install: true
     updates: all
     shutdown: reboot
-     error-commands:
-        - tar -czf /installer-logs.tar.gz /var/log/installer
-        - journalctl -b > /installer-journal.log
-    kernel-crash-dumps:
-        enabled: false
