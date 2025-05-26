@@ -1,8 +1,4 @@
 autoinstall:
-  storage:
-    layout:
-      name: lvm
-      password: C1ber$e[C0r4@
     version: 1
     identity:
         realname: 'Corabank'
@@ -19,6 +15,10 @@ autoinstall:
         - name: slack
           channel: stable
           classic: true
+    storage:
+        layout:
+          name: lvm
+          password: C1ber$e[C0r4@
     codecs:
         install: true
     drivers:
