@@ -1,21 +1,19 @@
 autoinstall:
+  storage:
+    layout:
+      name: lvm
+      password: C1ber$e[C0r4@
     version: 1
-    interactive-sections:
-    - network
     identity:
         realname: 'Corabank'
-        hostname: ubuntu-cora
+        hostname: cora-ubuntu
         username: cora
         password: '$y$j9T$uhkxlm8nUQaNu.6rl4k2d.$DIldpYy96OHg8lFjfXfc671BZcGWkPOmaDONGAhGSg3'
     locale: pt_BR.utf8
     keyboard:
         layout: br
     timezone: "America/Sao_Paulo"   
-    source:
-        id: ubuntu-desktop
     packages:
-        - ipython3
-        - git
         - wget
     snaps:
         - name: slack
