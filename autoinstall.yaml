@@ -1,0 +1,82 @@
+# Required configuration
+autoinstall:
+    version: 1 # Define a versão da configuração do autoinstall. Atualmente, deve ser "1".
+    interactive-sections: # Lista de etapas a serem exibidas durante a instalação
+        - network # Exibe a tela de conexão com a rede
+    identity: # Configura o usuário inicial para o sistema
+        realname: "Igor Ramalho"
+        username: irs
+        # ATENÇÃO: Gere um hash para a senha com o comando "mkpasswd usando o pacote whois"
+        password: "$y$j9T$uhkxlm8nUQaNu.6rl4k2d.$DIldpYy96OHg8lFjfXfc671BZcGWkPOmaDONGAhGSg3"
+        hostname: Irs-Ubuntu
+# Optional configuration
+    storage: # Especifica o layout de partição a ser usado
+    # AVISO: ISTO APAGA O DISCO INTEIRO!
+        layout:
+            name: hybrid # Usa TPM
+            encrypted: yes
+            match: # Especifica qual disco usar
+                size: largest # Usa o maior disco do sistema
+    keyboard: # Define o layout do teclado
+        layout: "br"
+        variant: "abnt2" # Variante ABNT2
+    locale: "pt_BR.UTF-8" # Define o local para Português do Brasil com UTF-8
+    timezone: "America/Sao_Paulo" # Define o fuso horário para Brasília
+    refresh-installer: # Controla a atualização do instalador
+        update: true # Atualiza o instalador antes de prosseguir
+        channel: "stable/ubuntu-$REL" # Atualiza do canal estável
+    source: # Especifica a variante do Ubuntu a ser instalada
+        id: ubuntu-desktop # Instalação padrão do Ubuntu Desktop
+    network: # Configuração de rede usando Netplan
+        version: 2
+        renderer: NetworkManager
+        ethernets: # Configura placas de rede cabeadas
+            wired:
+                match:
+                    name: e* # Aplica a TODAS as placas cabeadas
+                dhcp4: true # Usa DHCP para IPv4 (Automático)
+                dhcp6: true # Usa DHCP para IPv6 (Automático)
+        wifis: # Configura placas de rede sem fio
+            wireless:
+                match:
+                    name: w* # Aplica a TODAS as placas sem fio
+                dhcp4: true # Usa DHCP para IPv4 (Automático)
+                dhcp6: true # Usa DHCP para IPv6 (Automático)
+    apt: # Configuração do apt
+        preserve_sources_list: false
+        mirror-selection:
+            primary:
+                - country-mirror # Seleciona automaticamente o espelho local do seu país
+                - uri: "http://archive.ubuntu.com/ubuntu"
+            fallback: abort
+        geoip: true
+    ssh: # Configuração do SSH
+        install-server: false # ignora a instalação do servidor OpenSSH
+        authorized-keys: [] # Se true, Adicione suas chaves públicas SSH aqui, se desejar
+        allow-pw: true # Permite autenticação por senha (considere desativar por segurança)
+    codecs: # Instala codecs restritos
+        install: true # Instala (ubuntu-restricted-addons)
+    drivers: # Instala drivers de terceiros
+        install: true # Instala drivers adicionais (como os da Nvidia)
+    packages: # Lista de pacotes .deb a serem instalados, adicione outros pacotes .deb aqui se necessário
+        - git
+        - libreoffice
+        - firefox 
+    snaps: # Lista de snaps a serem instalados
+        - name: slack
+          channel: stable
+          classic: true # Slack geralmente requer modo clássico
+    updates: all # Instala todas as atualizações após a instalação
+    shutdown: reboot # Reinicia após a instalação
+    late-commands: # Comandos a serem executados após a instalação bem-sucedida
+        # 1. Copia o script do authd (montado em /cdrom) para o diretório /root do novo sistema
+        - cp /cdrom/authd.sh /target/root/authd.sh
+        # 2. Torna o script executável DENTRO do novo sistema
+        - curtin in-target -- chmod +x /root/authd.sh
+        # 3. Executa o script DENTRO do novo sistema
+        - curtin in-target -- /root/authd.sh
+    error-commands: # Comandos em caso de falha
+        - tar -czf /installer-logs.tar.gz /var/log/installer
+        - journalctl -b > /installer-journal.log
+    kernel-crash-dumps:
+        enabled: false
