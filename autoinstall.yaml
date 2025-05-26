@@ -4,24 +4,29 @@ autoinstall:
         realname: 'Corabank'
         hostname: cora-ubuntu
         username: cora
-        password: '$y$j9T$uhkxlm8nUQaNu.6rl4k2d.$DIldpYy96OHg8lFjfXfc671BZcGWkPOmaDONGAhGSg3'
+        password: '$y$j9T$TyAmQqIBJST1IRleYi38L0$r15SQ0TyHH1d1lV3CsmICVvh/6mZfmggxfRqn3M2/0A'
     locale: pt_BR.utf8
     keyboard:
         layout: br
     timezone: "America/Sao_Paulo"   
     packages:
-        - wget
+        - tpm2-tools
     snaps:
         - name: slack
           channel: stable
           classic: true
     storage:
         layout:
-          name: hybrid
-          encrypted: yes
+          name: lvm
+          password: c0r4dsk24
     codecs:
         install: true
     drivers:
         install: true
     updates: all
     shutdown: reboot
+     error-commands:
+        - tar -czf /installer-logs.tar.gz /var/log/installer
+        - journalctl -b > /installer-journal.log
+    kernel-crash-dumps:
+        enabled: false
