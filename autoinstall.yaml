@@ -1,10 +1,10 @@
 autoinstall:
     version: 1
     identity:
-        realname: 'Corabank'
-        hostname: cora-ubuntu
-        username: cora
-        password: '$y$j9T$TyAmQqIBJST1IRleYi38L0$r15SQ0TyHH1d1lV3CsmICVvh/6mZfmggxfRqn3M2/0A'
+        realname: 'Igor'
+        hostname: irs-ubuntu
+        username: irs
+        password: '$y$j9T$rsyMbWUWjMRTb4s4SKZqJ.$xTsaBvJ8AHMj3ccDiSpR6bD3Zg4E.vSKD3KdI5bfdv0'
     locale: pt_BR.utf8
     keyboard:
         layout: br
@@ -14,7 +14,7 @@ autoinstall:
     storage:
             layout:
               name: lvm
-              password: c0r4dsk24
+              password: 79112800
     codecs:
         install: true
     drivers:
