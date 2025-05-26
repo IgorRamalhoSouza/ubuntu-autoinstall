@@ -8,7 +8,7 @@ autoinstall:
         username: irs
         # ATENÇÃO: Gere um hash para a senha com o comando "mkpasswd usando o pacote whois"
         password: "$y$j9T$uhkxlm8nUQaNu.6rl4k2d.$DIldpYy96OHg8lFjfXfc671BZcGWkPOmaDONGAhGSg3"
-        hostname: Irs-Ubuntu
+        hostname: irs-Ubuntu
 # Optional configuration
     storage: # Especifica o layout de partição a ser usado
     # AVISO: ISTO APAGA O DISCO INTEIRO!
@@ -24,21 +24,6 @@ autoinstall:
     timezone: "America/Sao_Paulo" # Define o fuso horário para Brasília
     source: # Especifica a variante do Ubuntu a ser instalada
         id: ubuntu-desktop # Instalação padrão do Ubuntu Desktop
-    network: # Configuração de rede usando Netplan
-        version: 2
-        renderer: NetworkManager
-        ethernets: # Configura placas de rede cabeadas
-            wired:
-                match:
-                    name: e* # Aplica a TODAS as placas cabeadas
-                dhcp4: true # Usa DHCP para IPv4 (Automático)
-                dhcp6: true # Usa DHCP para IPv6 (Automático)
-        wifis: # Configura placas de rede sem fio
-            wireless:
-                match:
-                    name: w* # Aplica a TODAS as placas sem fio
-                dhcp4: true # Usa DHCP para IPv4 (Automático)
-                dhcp6: true # Usa DHCP para IPv6 (Automático)
     codecs: # Instala codecs restritos
         install: true # Instala (ubuntu-restricted-addons)
     drivers: # Instala drivers de terceiros
@@ -51,13 +36,6 @@ autoinstall:
           classic: true # Slack geralmente requer modo clássico
     updates: all # Instala todas as atualizações após a instalação
     shutdown: reboot # Reinicia após a instalação
-#    late-commands: # Comandos a serem executados após a instalação bem-sucedida
-        # 1. Copia o script do authd (montado em /cdrom) para o diretório /root do novo sistema
- #       - cp /cdrom/authd.sh /target/root/authd.sh
-        # 2. Torna o script executável DENTRO do novo sistema
-  #      - curtin in-target -- chmod +x /root/authd.sh
-        # 3. Executa o script DENTRO do novo sistema
-   #     - curtin in-target -- /root/authd.sh
     error-commands: # Comandos em caso de falha
         - tar -czf /installer-logs.tar.gz /var/log/installer
         - journalctl -b > /installer-journal.log
