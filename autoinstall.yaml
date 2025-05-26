@@ -17,8 +17,8 @@ autoinstall:
           classic: true
     storage:
         layout:
-          name: lvm
-          password: C1ber$e[C0r4@
+          name: hybrid
+          encrypted: yes
     codecs:
         install: true
     drivers:
