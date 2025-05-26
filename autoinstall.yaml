@@ -25,7 +25,7 @@ autoinstall:
     drivers: # Instala drivers de terceiros
         install: true # Instala drivers adicionais (como os da Nvidia)
     packages: # Lista de pacotes .deb a serem instalados, adicione outros pacotes .deb aqui se necessário
-        - firefox 
+        - wget
     snaps: # Lista de snaps a serem instalados
         - name: slack
           channel: stable
