@@ -8,7 +8,7 @@ autoinstall:
         username: irs
         # ATENÇÃO: Gere um hash para a senha com o comando "mkpasswd usando o pacote whois"
         password: "$y$j9T$uhkxlm8nUQaNu.6rl4k2d.$DIldpYy96OHg8lFjfXfc671BZcGWkPOmaDONGAhGSg3"
-        hostname: irs-Ubuntu
+        hostname: irs-ubuntu
 # Optional configuration
     storage: # Especifica o layout de partição a ser usado
     # AVISO: ISTO APAGA O DISCO INTEIRO!
@@ -19,8 +19,7 @@ autoinstall:
                 size: largest # Usa o maior disco do sistema
     keyboard: # Define o layout do teclado
         layout: "br"
-        variant: "abnt2" # Variante ABNT2
-    locale: "pt_BR.UTF-8" # Define o local para Português do Brasil com UTF-8
+    locale: "pt_BR.utf8" # Define o local para Português do Brasil com UTF-8
     timezone: "America/Sao_Paulo" # Define o fuso horário para Brasília
     source: # Especifica a variante do Ubuntu a ser instalada
         id: ubuntu-desktop # Instalação padrão do Ubuntu Desktop
