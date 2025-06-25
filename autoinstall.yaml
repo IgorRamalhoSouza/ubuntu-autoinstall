@@ -26,28 +26,16 @@ autoinstall:
     source:
         id: ubuntu-desktop
     packages:
-      - htop
-      - neofetch
       - curl
       - wget
       - unzip
-      - p7zip-full
       - timeshift
-      - vlc
       - ffmpeg
-      - google-chrome-stable
-      - thunderbird
       - discord
       - telegram-desktop
       - git
       - python3-pip
       - code
-      - keepassxc
-      - gnome-tweaks
-      - steam
-      - lutris
-      - gnome-shell-extensions
-      - virtualbox
     storage:
         layout:
             name: lvm
