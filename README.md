@@ -6,7 +6,7 @@ Um projeto para automatizar a instalação do Ubuntu 24.04 com minhas configura�
 
 ### Como usar
 
-1. Baixe a ISO oficial do Ubuntu 24.04
+1. Baixe a ISO oficial do Ubuntu 24.04 LTS
 2. Grave a ISO em um pendrive USB (usando Balena Etcher, Rufus ou similar)
 3. Copie os arquivos `autoinstall.yaml` e `ubuntu-debullshit.sh` para a raiz do pendrive
 4. Inicie o computador pelo pendrive
@@ -36,7 +36,7 @@ Script que roda após a instalação para:
 
 ### How to use
 
-1. Download official Ubuntu 24.04 ISO
+1. Download official Ubuntu 24.04 LTS ISO
 2. Flash it to a USB drive (using Balena Etcher, Rufus or similar)
 3. Copy both `autoinstall.yaml` and `ubuntu-debullshit.sh` to the root of the USB
 4. Boot from the USB drive
@@ -64,4 +64,16 @@ Post-install script that:
 
 ---
 
-Feito com ❤️ por [Seu Nome] - Personalizando Ubuntu desde [ano]
+### Agradecimentos / Credits
+
+Um especial obrigado ao [polkaulfield](https://github.com/polkaulfield) por criar e manter o incrível script `ubuntu-debullshit.sh` que forma o coração deste projeto.
+
+Agradecimentos também a todos os colaboradores e à comunidade Ubuntu que tornam este sistema possível.
+
+Special thanks to [polkaulfield](https://github.com/polkaulfield) for creating and maintaining the awesome `ubuntu-debullshit.sh` script that powers this project.
+
+We also thank all contributors and the Ubuntu community that make this system possible.
+
+---
+
+Feito com ❤️ por Igor!!!

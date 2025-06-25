@@ -1,12 +1,22 @@
 autoinstall:
-#Criado por mim para uso pessoal
+# Configuração de instalação automática do Ubuntu 24.04
+# Ubuntu 24.04 automated installation configuration
     version: 1
     interactive-sections:
-        - network #Abrir menu de rede no notebook e conectar ao wi-fi
+        - network # Abrir menu de rede no notebook e conectar ao wi-fi / Open network menu to connect to Wi-Fi
     identity:
         realname: 'Igor Ramalho'
         hostname: tomodachi
         username: irs
+        # Para gerar sua senha criptografada:
+        # 1. Instale whois: sudo apt install whois
+        # 2. Execute: mkpasswd -m sha-512
+        # 3. Digite sua senha quando solicitado e cole o hash aqui
+        #
+        # To generate your encrypted password:
+        # 1. Install whois: sudo apt install whois
+        # 2. Run: mkpasswd -m sha-512
+        # 3. Type your password when prompted and paste the hash here
         password: '$y$j9T$.xTQxEXzqbXXZfM1DU9TM.$6kFuGNftys6X1LN8/2TwKh.ufNluk2qpSyEPgc98CV8'
     locale: pt_BR.UTF-8
     keyboard:
@@ -16,7 +26,6 @@ autoinstall:
     source:
         id: ubuntu-desktop
     packages:
-      - snapd
       - htop
       - neofetch
       - curl
@@ -42,17 +51,17 @@ autoinstall:
     storage:
         layout:
             name: lvm
-            password: ""  # Senha vazia (opcional, se usar apenas TPM)
+            password: ""  # Senha vazia (opcional, se usar apenas TPM) / Empty password (optional if using only TPM)
             encryption:
                 type: luks
-                tpm: true  # Habilita o TPM para desbloqueio automático
-                pbkdf: argon2id  # Algoritmo recomendado (opcional)
-                key_size: 512    # Tamanho da chave (opcional)
+                tpm: true  # Habilita o TPM para desbloqueio automático / Enables TPM for automatic unlock
+                pbkdf: argon2id  # Algoritmo recomendado (opcional) / Recommended algorithm (optional)
+                key_size: 512    # Tamanho da chave (opcional) / Key size (optional)
         config:
             - type: disk
               id: disk-sda
               match:
-                  size: largest  # Usa o maior disco disponível
+                  size: largest  # Usa o maior disco disponível / Uses largest available disk
               ptable: gpt
               wipe: superblock
             - type: partition
@@ -64,14 +73,24 @@ autoinstall:
             - type: partition
               id: root-partition
               device: disk-sda
-              size: -1  # Usa todo o espaço restante
+              size: -1  # Usa todo o espaço restante / Uses all remaining space
     codecs:
         install: true
     drivers:
         install: true
     late-commands:
+    # 1. Copia o script 'ubuntu-debullshit.sh' do pendrive para o /tmp do sistema instalado
+    # 1. Copies 'ubuntu-debullshit.sh' from USB to installed system's /tmp
       - cp /cdrom/ubuntu-debullshit.sh /target/tmp/ubuntu-debullshit.sh
+    # 2. Torna o script executável
+    # 2. Makes the script executable
       - chmod +x /target/tmp/ubuntu-debullshit.sh
+    # 3. Executa o script dentro do ambiente do sistema instalado:
+    #    - 'curtin in-target' executa comandos no sistema instalado (montado em /target)
+    # 3. Runs the script inside the installed system environment:
+    #    - 'curtin in-target' executes commands in the installed system (mounted at /target)
       - curtin in-target -- /bin/sh /tmp/ubuntu-debullshit.sh
     updates: all
     shutdown: reboot
+    # Observação: Estes comandos rodam antes do primeiro boot do sistema instalado
+    # Note: These commands run before the first boot of the installed system    
