@@ -1,0 +1,77 @@
+autoinstall:
+#Criado por mim para uso pessoal
+    version: 1
+    interactive-sections:
+        - network #Abrir menu de rede no notebook e conectar ao wi-fi
+    identity:
+        realname: 'Igor Ramalho'
+        hostname: tomodachi
+        username: irs
+        password: '$y$j9T$.xTQxEXzqbXXZfM1DU9TM.$6kFuGNftys6X1LN8/2TwKh.ufNluk2qpSyEPgc98CV8'
+    locale: pt_BR.UTF-8
+    keyboard:
+        layout: us
+        variant: ""
+    timezone: "America/Sao_Paulo"
+    source:
+        id: ubuntu-desktop
+    packages:
+      - snapd
+      - htop
+      - neofetch
+      - curl
+      - wget
+      - unzip
+      - p7zip-full
+      - timeshift
+      - vlc
+      - ffmpeg
+      - google-chrome-stable
+      - thunderbird
+      - discord
+      - telegram-desktop
+      - git
+      - python3-pip
+      - code
+      - keepassxc
+      - gnome-tweaks
+      - steam
+      - lutris
+      - gnome-shell-extensions
+      - virtualbox
+    storage:
+        layout:
+            name: lvm
+            password: ""  # Senha vazia (opcional, se usar apenas TPM)
+            encryption:
+                type: luks
+                tpm: true  # Habilita o TPM para desbloqueio automático
+                pbkdf: argon2id  # Algoritmo recomendado (opcional)
+                key_size: 512    # Tamanho da chave (opcional)
+        config:
+            - type: disk
+              id: disk-sda
+              match:
+                  size: largest  # Usa o maior disco disponível
+              ptable: gpt
+              wipe: superblock
+            - type: partition
+              id: boot-partition
+              device: disk-sda
+              size: 1G
+              flag: boot
+              grub_device: true
+            - type: partition
+              id: root-partition
+              device: disk-sda
+              size: -1  # Usa todo o espaço restante
+    codecs:
+        install: true
+    drivers:
+        install: true
+    late-commands:
+      - cp /cdrom/ubuntu-debullshit.sh /target/tmp/ubuntu-debullshit.sh
+      - chmod +x /target/tmp/ubuntu-debullshit.sh
+      - curtin in-target -- /bin/sh /tmp/ubuntu-debullshit.sh
+    updates: all
+    shutdown: reboot
